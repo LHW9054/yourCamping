@@ -13,10 +13,10 @@
     		where cimg.first_img is not null 
     		and c.camping_confirm = 'Y'
     		<if test="keyword != null">
-	    		and c.facltNm like '%${keyword}%' 
+	    		and c.facltNm like '%' || #{keyword} || '%' 
     		</if>
     		<if test="induty != null">
-    			and c.induty like '%${induty}%'
+    			and c.induty like '%' || #{induty} || '%'
     		</if>
     		<if test="lctcl != null">
     			and c.lctcl = #{lctcl}
@@ -67,10 +67,10 @@
 	<select id="getSearchCnt" parameterType="string" resultType="int">
 		select count(*) from camping where camping_idx >= 1
 		<if test="keyword != null">
-			and facltNm like '%${keyword}%' 
+			and facltNm like '%' || #{keyword} || '%' 
 		</if>
 		<if test="induty != null">
-			and induty like '%${induty}%'
+			and induty like '%' || #{induty} || '%'
 		</if>
 		<if test="lctcl != null">
 			and lctcl = #{lctcl}
